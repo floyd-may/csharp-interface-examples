@@ -11,8 +11,8 @@ namespace LoggingExample
     {
         static void Main(string[] args)
         {
-            //var logger = new ConsoleLogger();
-            var logger = new FileLogger("log.txt");
+            var logger = new ConsoleLogger();
+            //var logger = new FileLogger("log.txt");
 
             var productionApp = new ProductionApp(logger);
 
