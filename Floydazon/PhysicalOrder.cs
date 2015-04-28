@@ -8,8 +8,13 @@ namespace Floydazon
 {
     class PhysicalOrder : IOrder
     {
-        public PhysicalOrder(string description, DateTime purchaseDate, bool delivered)
+        private bool _shipped;
+
+        public PhysicalOrder(string description, DateTime purchaseDate, bool shipped)
         {
+            Description = description;
+            PurchaseDate = purchaseDate;
+            _shipped = shipped;
         }
 
         public string Description
@@ -25,17 +30,11 @@ namespace Floydazon
 
         }
 
-        public bool Delivered
-        {
-            get;
-            private set;
-        }
-
         public CancelResult Cancel()
         {
-            if (this.Delivered)
+            if (this._shipped)
             {
-                return new CancelResult(false, "Item already delivered, cannot cancel order.");
+                return new CancelResult(false, "Item already shipped, cannot cancel order.");
             }
 
             return new CancelResult(true, "");

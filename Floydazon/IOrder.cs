@@ -12,8 +12,6 @@ namespace Floydazon
 
         DateTime PurchaseDate { get; }
 
-        bool Delivered { get; }
-
         CancelResult Cancel();
     }
 
